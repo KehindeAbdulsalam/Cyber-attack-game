@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBER SHIELD: DEFENDER</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <div class="arcade-cabinet" id="cabinet">
+    <div id="start-screen" class="screen active">
+      <h1>Cyber Shield</h1>
+      <p class="subtitle">INCOMING THREATS DETECTED // DEFEND THE NETWORK</p>
+      <div class="terminal-log">
+        > MISSION BRIEFING: Complete all 10 cyber defense scenarios to unlock your final score on the leaderboard. Speed and streaks multiply your points.
+      </div>
+      <div class="input-group">
+        <label for="agent-name" class="input-label">> ENTER YOUR AGENT CALLSIGN:</label>
+        <input type="text" id="agent-name" maxlength="15" placeholder="E.G. CYBER_WOLF" autocomplete="off" />
+        <button type="button" class="btn-primary" id="start-btn">Initialize Defense</button>
+      </div>
+      <div class="scoreboard-box">
+        <h3>// TOP ELITE DEFENDERS //</h3>
+        <table>
+          <thead><tr><th>RANK</th><th>AGENT CALLSIGN</th><th>SCORE</th></tr></thead>
+          <tbody id="start-leaderboard-body"></tbody>
+        </table>
+        <div style="text-align: right; margin-top: 8px;">
+          <button type="button" class="btn-secondary" id="reset-scores-btn">Reset Scoreboard</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+      <div class="hud-bar">
+        <div class="hud-item">AGENT: <span id="hud-agent">ANON</span></div>
+        <div class="hud-item">SCORE: <span id="score-val">0</span></div>
+        <div class="hud-item">STREAK: <span id="streak-val">1x</span></div>
+        <div class="hud-item">BLOCKED: <span id="blocked-val">0 / 10</span></div>
+      </div>
+      <div class="threat-panel">
+        <div class="threat-header">
+          <span id="question-counter">THREAT 1 / 10</span>
+          <span class="timer" id="timer-val">15s</span>
+        </div>
+        <div class="question-text" id="question-text">Loading threat telemetry...</div>
+      </div>
+      <div class="options-grid" id="options-grid"></div>
+      <div class="terminal-log" id="terminal-log">> Awaiting countermeasure selection...</div>
+    </div>
+
+    <div id="gameover-screen" class="screen">
+      <h2 id="end-status" class="status-banner">MISSION COMPLETE</h2>
+      <div class="final-score-display">
+        AGENT <span id="end-agent">ANON</span> // BLOCKED: <span id="end-blocked">0/10</span> // SCORE: <span id="final-score">0</span>
+      </div>
+      <div class="scoreboard-box">
+        <h3>// UPDATED SCOREBOARD //</h3>
+        <table>
+          <thead><tr><th>RANK</th><th>AGENT CALLSIGN</th><th>SCORE</th></tr></thead>
+          <tbody id="end-leaderboard-body"></tbody>
+        </table>
+      </div>
+      <div class="center-box">
+        <button type="button" class="btn-primary" id="reboot-btn">Play Again</button>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
